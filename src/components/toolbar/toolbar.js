@@ -1,3 +1,6 @@
+/*
+* Toolbar: menu e barra de ferramentas superior da aplicação
+*/
 import env from '../../shared/env'
 
 export default {

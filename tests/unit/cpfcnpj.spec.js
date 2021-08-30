@@ -1,3 +1,6 @@
+/*
+* Testes unitários do componente
+*/
 import CpfCnpj from '../../src/components/cpfcnpj/index.vue'
 
 describe('Componente CpfCnpj', () => {

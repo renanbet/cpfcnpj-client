@@ -1,3 +1,6 @@
+/*
+* CpfCnpj: Componente da tela de gestão de cpf e cnpj
+*/
 import AuthMixin from '@/shared/mixins/auth.mixin'
 import CpfCnpjMixin from '@/shared/mixins/cpfcnpj.mixin'
 

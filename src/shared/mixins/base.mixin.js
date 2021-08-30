@@ -1,4 +1,8 @@
 /* eslint-disable prefer-promise-reject-errors */
+/*
+* BaseMixin: Serviço base para todos os serviços
+* Os outros serviços estendem este para efetuar requests
+*/
 import axios from 'axios'
 import env from '../env'
 import { store } from '@/store/store'

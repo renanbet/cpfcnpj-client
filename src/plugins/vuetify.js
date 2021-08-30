@@ -1,3 +1,7 @@
+/*
+* Define variáveis padrões da aplicação.
+* Ex: cores do tema.
+*/
 import Vue from 'vue';
 import Vuetify from 'vuetify/lib';
 

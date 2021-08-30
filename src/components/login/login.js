@@ -1,3 +1,6 @@
+/*
+* Login: Componente da tela de login
+*/
 import AuthMixin from '@/shared/mixins/auth.mixin'
 import { store } from '@/store/store'
 

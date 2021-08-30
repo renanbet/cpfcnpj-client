@@ -1,4 +1,7 @@
 import Vue from 'vue'
+/*
+* App: componente raiz da aplicação
+*/
 import App from './components/app'
 import vuetify from './plugins/vuetify';
 import router from './router'

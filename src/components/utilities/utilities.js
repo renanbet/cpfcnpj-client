@@ -1,3 +1,7 @@
+/*
+* Utilities: componente para gerenciar eventos globais da aplicação.
+* Ex: snackbar, loading, etc.
+*/
 export default {
   name: 'utilities',
   components: {},

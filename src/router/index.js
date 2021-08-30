@@ -1,3 +1,8 @@
+/*
+* Controle de roteamento
+* Executado ao acessar uma rota
+* Verifica a permissão para acessar a rota
+*/
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import routes from './routes'

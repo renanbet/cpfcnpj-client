@@ -1,3 +1,8 @@
+/*
+* App: componente raiz da aplicação.
+* Este componente é responsável por renderizar 
+* as rotas declaradas no src/router.
+*/
 import Toolbar from '@/components/toolbar'
 import Utilities from '@/components/utilities'
 import { store } from '@/store/store'

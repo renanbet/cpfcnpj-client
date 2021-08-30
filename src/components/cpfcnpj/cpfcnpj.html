@@ -89,16 +89,15 @@
     <v-card>
       <v-card-title class="text-h5">{{dialogTitle}}</v-card-title>
       <v-card-text>
-        <form action="" id="login-form">
-          <v-text-field v-model="form.value"
-            name="value" label="CPF CNPJ"
-            type="text">
-          </v-text-field>
-          <v-checkbox
-            v-model="form.blacklist"
-            label="Blacklist"
-          ></v-checkbox>
-        </form>
+        <v-text-field v-model="form.value"
+          name="value" label="CPF CNPJ"
+          type="text"
+          @keypress.enter="save">
+        </v-text-field>
+        <v-checkbox
+          v-model="form.blacklist"
+          label="Blacklist"
+        ></v-checkbox>
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>

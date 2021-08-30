@@ -1,3 +1,6 @@
+/*
+* AuthMixin: Serviços de login e signup
+*/
 import BaseMixin from './base.mixin'
 
 const mixin = {
