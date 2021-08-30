@@ -1,0 +1,11 @@
+<section class="utilities">
+  <v-snackbar color="error" v-model="snackbar" :multi-line="multiLine" :top="true">
+    <span class="snack-text">{{ snackText }}</span>
+    <v-btn
+      icon
+      @click="snackbar = false"
+    >
+      <v-icon>close</v-icon>
+    </v-btn>
+  </v-snackbar>
+</section>

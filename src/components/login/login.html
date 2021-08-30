@@ -1,0 +1,52 @@
+<v-container fluid fill-height class="login">
+  <animated-slide-in-right>
+    <v-layout v-if="show" align-center justify-center>
+      <form v-if="isLogin" action="" id="login-form">
+        <v-row align="center">
+          <v-col cols="12" class="align-center">
+            <span class="title">{{title}}</span>
+          </v-col>
+        </v-row>
+        <v-text-field v-on:keyup.enter="verify" v-model="form.username"
+        prepend-icon="person" name="email" label="Login"
+          type="text">
+        </v-text-field>
+        <v-text-field v-on:keyup.enter="verify" v-model="form.password" id="current-password" prepend-icon="lock" name="password"
+          label="Senha" type="password"></v-text-field>
+
+        <v-spacer></v-spacer>
+        <v-btn text @click="verify" class="login-btn">Login</v-btn>
+
+        <div class="bottom-links">
+          <p>Não tem conta? <a href="#" @click="showSignup()">Cadastre-se</a></p>
+        </div>
+      </form>
+      <form v-else action="" id="login-form">
+        <v-row align="center">
+          <v-col cols="12" class="align-center">
+            <span class="title">{{title}}</span>
+          </v-col>
+        </v-row>
+        <v-text-field
+          v-on:keyup.enter="verify"
+          v-model="form.username"
+          prepend-icon="person"
+          name="username"
+          label="Login"
+          type="text" />
+        </v-text-field>
+        <v-text-field v-on:keyup.enter="verify" v-model="form.password" id="current-password" prepend-icon="lock" name="password"
+          label="Senha" type="password"></v-text-field>
+        <v-text-field v-on:keyup.enter="verify" v-model="form.confirmPassword" id="current-password" prepend-icon="lock"
+          name="password" label="Confirmar Senha" type="password"></v-text-field>
+
+        <v-spacer></v-spacer>
+        <v-btn text @click="verify" class="login-btn">Cadastrar</v-btn>
+
+        <div class="bottom-links">
+          <p>Já tem conta? <a href="#" @click="showSignup()">Login</a></p>
+        </div>
+      </form>
+    </v-layout>
+  </animated-slide-in-right>
+</v-container>

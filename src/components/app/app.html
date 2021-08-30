@@ -1,0 +1,11 @@
+<v-app id="app" :class="{'login-background': !show}">
+  <animated-fade-in-down>
+    <Toolbar title="Cpf Cnpj Client" v-if="show" @logout="logout"></Toolbar>
+  </animated-fade-in-down>
+  <v-content class="content">
+    <animated-fade-in>
+      <router-view />
+    </animated-fade-in>
+  </v-content>
+  <utilities></utilities>
+</v-app>
