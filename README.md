@@ -1,12 +1,12 @@
 # CPFCNPJ client
 
-## More instructions
+## Instruções em
 
 https://github.com/renanbet/cpfcnpj-compose
 
+## O app
 
-## The app
-
-- VueJs
+- Desenvolvido em VueJs
 - Vuetify
 - Vuex
+- Testes unitários com Jest
