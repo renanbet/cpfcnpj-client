@@ -8,7 +8,13 @@
           </h1>
         </v-col>
         <v-col>
-          <v-btn style="float: right;" fab dark color="error" @click="openAdd()">
+          <v-btn
+            style="float: right;"
+            fab
+            dark
+            color="error"
+            @click="openAdd()"
+          >
             <v-icon color="primary">add</v-icon>
           </v-btn>
         </v-col>
@@ -42,45 +48,52 @@
         </v-col>
       </v-row>
       <v-row>
-      <v-col cols="12">
-        <v-data-table
-          :headers="headers"
-          :items="items"
-          :footer-props="footerProps"
-          :items-per-page="5"
-          class="elevation-1"
-        >
-        <template v-slot:item.blacklist="{ item }">
-          <v-icon v-if="item.blacklist" color="red">
-            fiber_manual_record
-          </v-icon>
-        </template>
-        <template v-slot:item.actions="{ item }">
-          <v-icon
-            small
-            class="mr-2"
-            @click="editItem(item)"
+        <v-col cols="12" style="padding-left: 30px;">
+          <p>Filtrar por Blacklist</p>
+          <v-radio-group @change="filterSearch" v-model="blacklistFilter" row>
+            <v-radio label="Todos" value="all"></v-radio>
+            <v-radio label="Blacklist" value="1"></v-radio>
+            <v-radio label="Não Blacklist" value="0"></v-radio>
+          </v-radio-group>
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col cols="12">
+          <v-data-table
+            :headers="headers"
+            :items="items"
+            :footer-props="footerProps"
+            :items-per-page="5"
+            class="elevation-1"
           >
-            mdi-pencil
-          </v-icon>
-          <v-icon
-            small
-            @click="deleteItem(item)"
-          >
-            mdi-delete
-          </v-icon>
-        </template>
-      </v-data-table>
-      </v-col>
+            <template v-slot:item.blacklist="{ item }">
+              <v-icon v-if="item.blacklist" color="red">
+                fiber_manual_record
+              </v-icon>
+            </template>
+            <template v-slot:item.actions="{ item }">
+              <v-icon small class="mr-2" @click="editItem(item)">
+                mdi-pencil
+              </v-icon>
+              <v-icon small @click="deleteItem(item)">
+                mdi-delete
+              </v-icon>
+            </template>
+          </v-data-table>
+        </v-col>
       </v-row>
     </v-card-text>
   </v-card>
   <v-dialog v-model="dialogDelete" max-width="500px">
     <v-card>
-      <v-card-title class="text-h5">Confirma a exclusão de {{dialogTitle}}?</v-card-title>
+      <v-card-title class="text-h5"
+        >Confirma a exclusão de {{dialogTitle}}?</v-card-title
+      >
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn color="darken-1" text @click="dialogDelete = false">Cancelar</v-btn>
+        <v-btn color="darken-1" text @click="dialogDelete = false"
+          >Cancelar</v-btn
+        >
         <v-btn color="darken-1" text @click="deleteItemConfirm">Sim</v-btn>
       </v-card-actions>
     </v-card>
@@ -89,15 +102,15 @@
     <v-card>
       <v-card-title class="text-h5">{{dialogTitle}}</v-card-title>
       <v-card-text>
-        <v-text-field v-model="form.value"
-          name="value" label="CPF CNPJ"
+        <v-text-field
+          v-model="form.value"
+          name="value"
+          label="CPF CNPJ"
           type="text"
-          @keypress.enter="save">
+          @keypress.enter="save"
+        >
         </v-text-field>
-        <v-checkbox
-          v-model="form.blacklist"
-          label="Blacklist"
-        ></v-checkbox>
+        <v-checkbox v-model="form.blacklist" label="Blacklist"></v-checkbox>
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>

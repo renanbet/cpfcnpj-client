@@ -1,39 +1,38 @@
 /*
-* CpfCnpjMixin: Serviços de cpf cnpj
-*/
+ * CpfCnpjMixin: Serviços de cpf cnpj
+ */
 import BaseMixin from './base.mixin'
 
 const mixin = {
-  mixins: [
-    BaseMixin
-  ],
+  mixins: [BaseMixin],
   methods: {
-    async getAllCpfCnpj (search = '') {
+    async getAllCpfCnpj(search = '', blacklist = null) {
       let url = 'cpfcnpj'
-      const encoded = search ? `?search=${encodeURI(search)}` : ''
-      const data = await this.requestGet(`${url}${encoded}`)
+      const encoded = search ? `search=${encodeURI(search)}` : ''
+      const blacklistParam = blacklist !== null ? `&blacklist=${blacklist}` : ''
+      const data = await this.requestGet(`${url}?${encoded}${blacklistParam}`)
       return data.data
     },
-    async postCpfCnpj (payload) {
+    async postCpfCnpj(payload) {
       let url = 'cpfcnpj'
       const data = await this.requestPost(`${url}`, payload)
       return data
     },
-    async putCpfCnpj (id, payload) {
+    async putCpfCnpj(id, payload) {
       let url = 'cpfcnpj'
       const data = await this.requestPut(`${url}/${id}`, payload)
       return data
     },
-    async getCpfCnpj (id) {
+    async getCpfCnpj(id) {
       let url = 'cpfcnpj'
       const data = await this.requestGet(`${url}/${id}`)
       return data
     },
-    async deleteCpfCnpj (id) {
+    async deleteCpfCnpj(id) {
       let url = 'cpfcnpj'
       const data = await this.requestDelete(`${url}/${id}`)
       return data
-    },
+    }
   }
 }
 

@@ -1,17 +1,13 @@
 /*
-* CpfCnpj: Componente da tela de gestão de cpf e cnpj
-*/
+ * CpfCnpj: Componente da tela de gestão de cpf e cnpj
+ */
 import AuthMixin from '@/shared/mixins/auth.mixin'
 import CpfCnpjMixin from '@/shared/mixins/cpfcnpj.mixin'
 
 export default {
   name: 'cpfcnpj',
-  components: {
-  },
-  mixins: [
-    AuthMixin,
-    CpfCnpjMixin
-  ],
+  components: {},
+  mixins: [AuthMixin, CpfCnpjMixin],
   props: {},
   data: () => ({
     headers: [
@@ -21,11 +17,11 @@ export default {
         value: 'value'
       },
       { text: 'Blacklist', value: 'blacklist' },
-      { text: '', value: 'actions', sortable: false },
+      { text: '', value: 'actions', sortable: false }
     ],
     footerProps: {
-      'items-per-page-text':'Linhas por página',
-      'pageText': '{0}-{1} de {2}',
+      'items-per-page-text': 'Linhas por página',
+      pageText: '{0}-{1} de {2}'
     },
     listCpfCnpj: [],
     dialogDelete: false,
@@ -37,19 +33,25 @@ export default {
       value: '',
       blacklist: false
     },
-    idToDelete: 0
+    idToDelete: 0,
+    blacklistFilter: 'all'
   }),
   computed: {
-    items () {
+    items() {
       return this.listCpfCnpj
     }
   },
   async mounted() {
     try {
-      let data = await this.getAllCpfCnpj()
+      const blacklist =
+        this.blacklistFilter === 'all' ? null : parseInt(this.blacklistFilter)
+      let data = await this.getAllCpfCnpj('', blacklist)
       this.listCpfCnpj = data.data
     } catch (e) {
-      this.$root.$emit('toast', { message: 'Erro ao buscar os cpf cnpj', type: 'error' })
+      this.$root.$emit('toast', {
+        message: 'Erro ao buscar os cpf cnpj',
+        type: 'error'
+      })
     }
   },
   methods: {
@@ -58,29 +60,26 @@ export default {
       this.filterSearch()
     },
     async filterSearch() {
-      if (!this.search) {
-        let data = await this.getAllCpfCnpj()
-        this.listCpfCnpj = data.data
-        return
-      }
-      let data = await this.getAllCpfCnpj(this.search)
+      const blacklist =
+        this.blacklistFilter === 'all' ? null : parseInt(this.blacklistFilter)
+      let data = await this.getAllCpfCnpj(this.search, blacklist)
       this.listCpfCnpj = data.data
     },
-    openAdd () {
+    openAdd() {
       this.dialogTitle = 'Novo CPF CNPJ'
       this.form.value = ''
       this.form.blacklist = false
       this.form.id = 0
       this.dialog = true
     },
-    editItem (item) {
+    editItem(item) {
       this.dialogTitle = item.value
       this.form.value = item.value
       this.form.blacklist = item.blacklist
       this.form.id = item._id
       this.dialog = true
     },
-    async save () {
+    async save() {
       let payload = Object.assign({}, this.form)
       delete payload.id
       try {
@@ -95,16 +94,16 @@ export default {
         //
       }
     },
-    deleteCancel () {
+    deleteCancel() {
       this.idToDelete = 0
       this.dialogDelete = false
     },
-    deleteItem (item) {
+    deleteItem(item) {
       this.dialogTitle = item.value
       this.idToDelete = item._id
       this.dialogDelete = true
     },
-    async deleteItemConfirm () {
+    async deleteItemConfirm() {
       if (this.idToDelete) {
         await this.deleteCpfCnpj(this.idToDelete)
         this.filterSearch()
